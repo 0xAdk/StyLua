@@ -127,6 +127,8 @@ impl Range {
 #[serde(default, deny_unknown_fields)]
 #[cfg_attr(target_arch = "wasm32", wasm_bindgen)]
 pub struct Config {
+    enable_0xalx_fork_mods: bool,
+
     /// The approximate line length to use when printing the code.
     /// This is used as a guide to determine when to wrap lines, but note
     /// that this is not a hard upper bound.
@@ -269,6 +271,7 @@ impl Config {
 impl Default for Config {
     fn default() -> Self {
         Self {
+            enable_0xalx_fork_mods: false,
             column_width: 120,
             line_endings: LineEndings::default(),
             indent_type: IndentType::default(),
