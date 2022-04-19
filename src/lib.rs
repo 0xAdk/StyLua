@@ -211,8 +211,12 @@ pub enum SpaceAfterFunctionNames {
 #[cfg_attr(all(target_arch = "wasm32", feature = "wasm-bindgen"), wasm_bindgen)]
 #[cfg_attr(feature = "serialize", derive(serde::Serialize))]
 pub struct Config {
+    /// If the 0xadk patches should be applied
+    pub enable_0xadk_patches: bool,
+
     /// The type of Lua syntax to parse.
     pub syntax: LuaVersion,
+
     /// The approximate line length to use when printing the code.
     /// This is used as a guide to determine when to wrap lines, but note
     /// that this is not a hard upper bound.
@@ -266,6 +270,7 @@ impl Default for Config {
     fn default() -> Self {
         #[allow(deprecated)]
         Self {
+            enable_0xadk_patches: false,
             syntax: LuaVersion::default(),
             column_width: 120,
             line_endings: LineEndings::default(),
