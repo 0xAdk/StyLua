@@ -39,7 +39,8 @@ pub fn format_anonymous_function(
     function_body: &FunctionBody,
     shape: Shape,
 ) -> (TokenReference, FunctionBody) {
-    let function_token = fmt_symbol!(ctx, function_token, "function", shape);
+    let fork = ctx.config().enable_0xalx_fork_mods;
+    let function_token = fmt_symbol!(ctx, function_token, if fork { "function " } else { "function" }, shape);
     let function_body = format_function_body(ctx, function_body, shape);
 
     (function_token, function_body)
