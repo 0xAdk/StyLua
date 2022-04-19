@@ -346,6 +346,8 @@ pub fn format_function_args(
     shape: Shape,
     call_next_node: FunctionCallNextNode,
 ) -> FunctionArgs {
+    let call_next_node = if ctx.config().enable_0xalx_fork_mods { FunctionCallNextNode::None } else { call_next_node };
+
     match function_args {
         FunctionArgs::Parentheses {
             parentheses,
