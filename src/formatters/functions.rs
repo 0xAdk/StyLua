@@ -11,8 +11,8 @@ use full_moon::tokenizer::{Token, TokenKind, TokenReference, TokenType};
 use crate::formatters::luau::{format_generic_declaration, format_type_specifier};
 use crate::{
     context::{
-        create_function_call_trivia, create_function_definition_trivia, create_indent_trivia,
-        create_newline_trivia, Context,
+        create_anonymous_function_definition_trivia, create_function_call_trivia,
+        create_function_definition_trivia, create_indent_trivia, create_newline_trivia, Context,
     },
     fmt_symbol,
     formatters::{
@@ -46,7 +46,7 @@ pub fn format_anonymous_function(
     shape: Shape,
 ) -> Box<(TokenReference, FunctionBody)> {
     const FUNCTION_LEN: usize = "function".len();
-    let function_definition_trivia = vec![create_function_definition_trivia(ctx)];
+    let function_definition_trivia = vec![create_anonymous_function_definition_trivia(ctx)];
     let function_token = fmt_symbol!(ctx, &anonymous_function.0, "function", shape)
         .update_trailing_trivia(FormatTriviaType::Append(function_definition_trivia));
     let function_body =

@@ -274,6 +274,7 @@ convert_enum!(CollapseSimpleStatement, ArgCollapseSimpleStatement, {
 convert_enum!(SpaceAfterFunctionNames, ArgSpaceAfterFunctionNames, {
     Never,
     Definitions,
+    Anonymous,
     Calls,
     Always,
 });

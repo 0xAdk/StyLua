@@ -199,6 +199,8 @@ pub enum SpaceAfterFunctionNames {
     Never,
     /// Use spaces after function names only for function definitions.
     Definitions,
+    /// Use spaces after the function keyword only for lambda definitions.
+    Anonymous,
     /// Use spaces after function names only for function calls.
     Calls,
     /// Use spaces after function names in definitions and calls.

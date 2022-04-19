@@ -181,15 +181,26 @@ pub fn create_plain_indent_trivia(ctx: &Context, indent_level: usize) -> Token {
     }
 }
 
+pub fn create_anonymous_function_definition_trivia(ctx: &Context) -> Token {
+    match ctx.config().space_after_function_names {
+        SpaceAfterFunctionNames::Anonymous => Token::new(TokenType::spaces(1)),
+
+        SpaceAfterFunctionNames::Never
+        | SpaceAfterFunctionNames::Definitions
+        | SpaceAfterFunctionNames::Calls
+        | SpaceAfterFunctionNames::Always => create_function_definition_trivia(ctx),
+    }
+}
+
 /// Creates a new Token containing whitespace used after function declarations
 pub fn create_function_definition_trivia(ctx: &Context) -> Token {
     match ctx.config().space_after_function_names {
         SpaceAfterFunctionNames::Always | SpaceAfterFunctionNames::Definitions => {
             Token::new(TokenType::spaces(1))
         }
-        SpaceAfterFunctionNames::Never | SpaceAfterFunctionNames::Calls => {
-            Token::new(TokenType::spaces(0))
-        }
+        SpaceAfterFunctionNames::Never
+        | SpaceAfterFunctionNames::Calls
+        | SpaceAfterFunctionNames::Anonymous => Token::new(TokenType::spaces(0)),
     }
 }
 
@@ -199,9 +210,10 @@ pub fn create_function_call_trivia(ctx: &Context) -> Token {
         SpaceAfterFunctionNames::Always | SpaceAfterFunctionNames::Calls => {
             Token::new(TokenType::spaces(1))
         }
-        SpaceAfterFunctionNames::Never | SpaceAfterFunctionNames::Definitions => {
-            Token::new(TokenType::spaces(0))
-        }
+
+        SpaceAfterFunctionNames::Never
+        | SpaceAfterFunctionNames::Anonymous
+        | SpaceAfterFunctionNames::Definitions => Token::new(TokenType::spaces(0)),
     }
 }
 
