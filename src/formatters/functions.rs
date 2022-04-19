@@ -18,8 +18,8 @@ use crate::formatters::luau::{
 };
 use crate::{
     context::{
-        create_function_call_trivia, create_function_definition_trivia, create_indent_trivia,
-        create_newline_trivia, Context,
+        create_anonymous_function_definition_trivia, create_function_call_trivia,
+        create_function_definition_trivia, create_indent_trivia, create_newline_trivia, Context,
     },
     fmt_symbol,
     formatters::{
@@ -65,13 +65,12 @@ pub fn format_anonymous_function(
         })
         .collect();
 
-    let function_definition_trivia = vec![create_function_definition_trivia(ctx)];
-    let function_token = fmt_symbol!(ctx, anonymous_function.function_token(), "function", shape)
-        .update_trailing_trivia(FormatTriviaType::Append(function_definition_trivia));
+    let function_definition_trivia = vec![create_anonymous_function_definition_trivia(ctx)];
+    let function_token = fmt_symbol!(ctx, anonymous_function.function_token(), "function", shape).update_trailing_trivia(FormatTriviaType::Append(function_definition_trivia));
     let function_body = format_function_body(
         ctx,
         anonymous_function.body(),
-        shape.add_width(FUNCTION_LEN),
+        shape.add_width(FUNCTION_LEN)
     );
 
     let anonymous_function = anonymous_function

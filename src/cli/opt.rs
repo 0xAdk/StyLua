@@ -291,6 +291,7 @@ convert_enum!(BlockNewlineGaps, ArgBlockNewlineGaps, {
 convert_enum!(SpaceAfterFunctionNames, ArgSpaceAfterFunctionNames, {
     Never,
     Definitions,
+    Anonymous,
     Calls,
     Always,
 });
