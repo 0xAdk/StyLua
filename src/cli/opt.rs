@@ -10,7 +10,11 @@ lazy_static::lazy_static! {
 }
 
 #[derive(StructOpt, Clone, Debug)]
-#[structopt(name = "stylua", about = "A utility to format Lua code", version)]
+#[structopt(
+    name = "stylua (w/ 0xadk patches)",
+    about = "A utility to format Lua code",
+    version
+)]
 pub struct Opt {
     /// Specify path to stylua.toml configuration file.
     ///
