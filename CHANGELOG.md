@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.5.1] - 2026-05-16
+
 ### Fixed
 
 - Fixed npm publishing by bumping Node.js from 22 to 24 in CI workflows to support npm trusted publishing
@@ -201,13 +203,11 @@ failing tests ([#824](https://github.com/JohnnyMorganz/StyLua/issues/824))
 ### Changed
 
 - Updated parser crate with following changes:
-
   - Support Luau floor division (`//`)
   - Fix Luau string interpolation parsing
   - Fix Luau `\z` escape parsing
 
 - Simplified access and modification patterns for StyLua configuration. You can now access the properties directly
-
   - **Deprecated:** the old access patterns of `.property()` and `.with_property()` are now deprecated
   - **Breaking Change (WASM):** due to JS/TS lack of differentiation between `.property` / `.property()` implementation, the `.property()` functions were removed from WASM output.
 
@@ -913,7 +913,8 @@ This feature is enabled by default, it can be disabled using `--no-editorconfig`
 
 Initial alpha release
 
-[unreleased]: https://github.com/JohnnyMorganz/StyLua/compare/v2.5.0...HEAD
+[unreleased]: https://github.com/JohnnyMorganz/StyLua/compare/v2.5.1...HEAD
+[2.5.1]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v2.5.1
 [2.5.0]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v2.5.0
 [2.4.1]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v2.4.1
 [2.4.0]: https://github.com/JohnnyMorganz/StyLua/releases/tag/v2.4.0
