@@ -1,6 +1,6 @@
 {
   "name": "@johnnymorganz/stylua-bin-linux-arm64",
-  "version": "2.4.1",
+  "version": "2.5.0",
   "description": "StyLua binary for Linux arm64",
   "os": [
     "linux"
